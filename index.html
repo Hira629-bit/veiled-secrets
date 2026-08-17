@@ -35,8 +35,9 @@ footer{text-align:center;padding:35px;background:#201516;color:#ddd;font-size:14
 <p class="subtitle">A gripping psychological family drama where love, loyalty, betrayal and buried truths collide.</p>
 <div class="price">PKR <span id="priceDisplay">2300</span></div>
 <button class="btn" onclick="openOrder()">Buy Your Copy</button></div>
-<div class="book-cover"><small>HIRA BUTT</small><h2>VEILED<br>SECRETS</h2><p>PART ONE<br>SECRETS FOLDED</p></div>
-</section>
+<div class="book-cover">
+    <img src="cover.jpg" alt="Veiled Secrets by Hira Butt">
+</div></section>
 
 <section>
 <h2 class="section-title">About the Book</h2>
@@ -66,7 +67,7 @@ footer{text-align:center;padding:35px;background:#201516;color:#ddd;font-size:14
 <div id="modalForm"></div></div></div>
 
 <script>
-const PRICE=2300;
+const PRICE=2000;
 document.getElementById('year').textContent=new Date().getFullYear();
 function updateTotal(){let q=Math.max(1,parseInt(document.getElementById('qty').value)||1);document.getElementById('total').textContent=(q*PRICE).toLocaleString()}
 function openOrder(){document.getElementById('order').scrollIntoView({behavior:'smooth'});document.getElementById('cartCount').textContent='1'}
