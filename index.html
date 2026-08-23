@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veiled Secrets — Hira Butt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0b0a0d;
+    --void-2:#111014;
+    --bone:#ece7dc;
+    --bone-dim:#b7b0a1;
+    --blood:#5c1420;
+    --blood-bright:#8a1f2c;
+    --line:rgba(236,231,220,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--bone);
+    font-family:'EB Garamond', serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  .eyebrow{
+    font-family:'EB Garamond', serif;
+    font-size:0.72rem;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+  }
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+
+  .torn{
+    position:relative;
+    height:34px;
+    background:var(--void);
+  }
+  .torn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(135deg, var(--void) 47%, transparent 53%) 0 0/22px 22px,
+      linear-gradient(-135deg, var(--void) 47%, transparent 53%) 11px 0/22px 22px;
+    background-color:var(--void-2);
+  }
+  .torn.flip{transform:scaleY(-1);}
+
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    min-height:100vh;
+    background:var(--void-2);
+  }
+  .hero-cover{
+    position:relative;
+    overflow:hidden;
+    border-right:1px solid var(--line);
+  }
+  .hero-cover img{
+    width:100%;height:100%;object-fit:cover;
+    filter:contrast(1.05);
+  }
+  .hero-copy{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:6vw 5vw;
+    position:relative;
+  }
+  .hero-copy .eyebrow{margin-bottom:1.4rem;}
+  .hero-title{
+    font-size:clamp(2.6rem, 5.2vw, 4.6rem);
+    line-height:0.98;
+    margin-bottom:1.6rem;
+  }
+  .hero-title em{
+    font-style:italic;
+    color:var(--bone);
+  }
+  .hero-tagline{
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--bone-dim);
+    max-width:34ch;
+    margin-bottom:2.4rem;
+    border-left:2px solid var(--blood);
+    padding-left:1rem;
+  }
+  .hero-meta{
+    display:flex;
+    gap:2rem;
+    font-size:0.85rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+    margin-bottom:2.6rem;
+    flex-wrap:wrap;
+  }
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:0.95rem 2.1rem;
+    font-family:'EB Garamond', serif;
+    font-size:1rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid var(--bone);
+    color:var(--bone);
+    transition:background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    cursor:pointer;
+    background:transparent;
+  }
+  .btn.solid{
+    background:var(--blood);
+    border-color:var(--blood);
+    color:var(--bone);
+  }
+  .btn:hover{background:var(--bone);color:var(--void);border-color:var(--bone);}
+  .btn.solid:hover{background:var(--blood-bright);color:var(--bone);border-color:var(--blood-bright);}
+
+  section{padding:6.5rem 5vw;}
+  .section-inner{max-width:840px;margin:0 auto;}
+  .section-label{margin-bottom:1.2rem;}
+  .section-title{font-size:clamp(1.9rem,3vw,2.6rem);margin-bottom:2rem;}
+  .body-text p{margin-bottom:1.3rem;color:var(--bone-dim);font-size:1.08rem;}
+  .body-text p:last-child{margin-bottom:0;}
+
+  .about{background:var(--void-2);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:2.5rem;
+    align-items:start;
+  }
+  .author-mark{
+    width:64px;height:64px;
+    border:1px solid var(--blood);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.6rem;
+    color:var(--bone);
+    flex-shrink:0;
+  }
+
+  .back-cover-section{background:var(--void);}
+  .back-cover-inner{max-width:520px;margin:0 auto;text-align:center;}
+  .back-cover-inner img{
+    width:100%;
+    border:1px solid var(--line);
+  }
+
+  .order{background:var(--void-2);}
+  .order-inner{max-width:640px;margin:0 auto;}
+  .price-block{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:2.6rem;
+  }
+  .price-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:1.2rem 0;
+  }
+  .price-line + .price-line{border-top:1px solid var(--line);}
+  .price-line .fmt{font-size:1.1rem;}
+  .price-line .price{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--bone);}
+
+  form{display:flex;flex-direction:column;gap:1.5rem;}
+  .field{display:flex;flex-direction:column;gap:0.5rem;}
+  .field label{
+    font-size:0.76rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+  }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field input[type="number"],
+  .field select,
+  .field textarea{
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line);
+    color:var(--bone);
+    font-family:'EB Garamond',serif;
+    font-size:1.05rem;
+    padding:0.7rem 0.1rem;
+    outline:none;
+    transition:border-color 0.2s ease;
+  }
+  .field textarea{resize:vertical;min-height:70px;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blood-bright);}
+  .field select{appearance:none;-webkit-appearance:none;background:transparent;}
+  .field select option{background:var(--void);color:var(--bone);}
+
+  .field input[type="file"]{
+    color:var(--bone-dim);
+    font-family:'EB Garamond',serif;
+    font-size:0.95rem;
+    padding:0.6rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .field input[type="file"]::file-selector-button{
+    background:transparent;
+    border:1px solid var(--bone-dim);
+    color:var(--bone);
+    font-family:'EB Garamond',serif;
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:0.5rem 1rem;
+    margin-right:1rem;
+    cursor:pointer;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .field input[type="file"]::file-selector-button:hover{
+    border-color:var(--blood-bright);
+    color:var(--blood-bright);
+  }
+
+  .radio-row{display:flex;gap:1.8rem;flex-wrap:wrap;}
+  .radio-opt{
+    display:flex;align-items:center;gap:0.6rem;
+    font-size:1rem;color:var(--bone);
+    cursor:pointer;
+  }
+  .radio-opt input{accent-color:var(--blood-bright);width:16px;height:16px;}
+
+  .hidden{display:none !important;}
+
+  .submit-row{margin-top:1rem;}
+  .note{
+    font-size:0.85rem;
+    color:var(--bone-dim);
+    margin-top:1.2rem;
+    line-height:1.6;
+  }
+  .form-status{
+    font-size:0.9rem;
+    padding-top:0.4rem;
+    display:none;
+  }
+  .form-status.show{display:block;}
+  .form-status.ok{color:#9fc79f;}
+  .form-status.err{color:#d98a8a;}
+
+  footer{
+    padding:3rem 5vw;
+    text-align:center;
+    color:var(--bone-dim);
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+  }
+  footer .flourish{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.4rem;
+    color:var(--blood);
+    margin-bottom:0.8rem;
+  }
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;}
+    .hero-cover{height:auto;border-right:none;border-bottom:1px solid var(--line);}
+    .hero-cover img{width:100%;height:auto;object-fit:contain;}
+    .hero-copy{padding:3.4rem 6vw;}
+    .about-grid{grid-template-columns:1fr;}
+    section{padding:4rem 6vw;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-cover">
+    <img src="cover-front.jpeg" alt="Veiled Secrets book cover — a woman's silhouette fading into shadow">
+  </div>
+  <div class="hero-copy">
+    <div class="eyebrow">Fiction · Mystery · Suspense</div>
+    <h1 class="hero-title">Veiled<br><em>Secrets</em></h1>
+    <p class="hero-tagline">Some secrets are meant to stay buried. But the truth always finds a way.</p>
+    <div class="hero-meta">
+      <span>Part One — Secrets Folded</span>
+      <span>By Hira Butt</span>
+      <span>ISBN 978-627-95021-0-0</span>
+    </div>
+    <div class="cta-row">
+      <a href="#order" class="btn solid">Place an Order</a>
+      <a href="#author" class="btn">About the Author</a>
+    </div>
+  </div>
+</div>
+
+<div class="torn"></div>
+
+<section class="about" id="author">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="author-mark">HB</div>
+      <div>
+        <div class="eyebrow section-label">The Author</div>
+        <h2 class="section-title" style="margin-bottom:1rem;">Hira Butt</h2>
+        <div class="body-text">
+          <p>Hira Butt is a Pakistani author whose love for storytelling has been shaped by a lifelong fascination with the power of words. A graduate in English Literature and Linguistics, she has always been drawn to mystery and thrillers — the kind of stories that hook a reader and don't let go.</p>
+          <p><em>Veiled Secrets</em> is her debut novel, marking the start of a literary journey built on curiosity, creativity, and a passion for meaningful storytelling.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="torn"></div>
+
+<section class="order" id="order">
+  <div class="order-inner">
+    <div class="eyebrow section-label">Order</div>
+    <h2 class="section-title">Reserve Your Copy</h2>
+    <div class="price-block">
+      <div class="price-line">
+        <span class="fmt">eBook</span>
+        <span class="price">Rs. 1,000</span>
+      </div>
+      <div class="price-line">
+        <span class="fmt">Paperback <span style="opacity:0.6;font-size:0.85rem;">(incl. delivery charges)</span></span>
+        <span class="price">Rs. 2,300</span>
+      </div>
+    </div>
+    <p class="body-text" style="margin-bottom:1.5rem;color:var(--bone-dim);">
+      This isn't an automated checkout — fill in the details below and the order is sent directly for processing. Full payment is required in advance. Payment details and order confirmation will be shared by email or phone.
+    </p>
+
+    <form id="orderForm" action="https://formspree.io/f/xljrpjon" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="New order — Veiled Secrets">
+      <input type="hidden" name="_next" value="https://hira629-bit.github.io/veiled-secrets/index.html?ordered=1#order">
+
+      <div class="field">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="Name" required>
+      </div>
+
+      <div class="field">
+        <label>Format</label>
+        <div class="radio-row">
+          <label class="radio-opt"><input type="radio" name="Format" value="eBook" checked> eBook</label>
+          <label class="radio-opt"><input type="radio" name="Format" value="Paperback"> Paperback</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="Quantity" min="1" value="1" required>
+      </div>
+
+      <div class="field" id="addressField">
+        <label for="address">Delivery Address <span style="opacity:0.6;">(paperback only)</span></label>
+        <textarea id="address" name="Delivery Address"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="Email" required>
+      </div>
+
+      <div class="field">
+        <label for="phone">Contact Number</label>
+        <input type="tel" id="phone" name="Phone Number" required>
+      </div>
+
+      <div class="field">
+        <label for="payment">Preferred Payment Method</label>
+        <select id="payment" name="Payment Method" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+          <option value="EasyPaisa / JazzCash">EasyPaisa / JazzCash</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="receipt">Payment Receipt <span style="opacity:0.6;">(screenshot or photo)</span></label>
+        <input type="file" id="receipt" name="Payment Receipt" accept="image/*">
+      </div>
+
+      <div class="field">
+        <label for="notes">Notes <span style="opacity:0.6;">(optional)</span></label>
+        <textarea id="notes" name="Notes"></textarea>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn solid">Submit Order</button>
+        <p class="form-status" id="formStatus"></p>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="flourish">✦</div>
+  <div>Veiled Secrets: Part One — Secrets Folded · Hira Butt</div>
+</footer>
+
+<script>
+  const formatRadios = document.querySelectorAll('input[name="Format"]');
+  const addressField = document.getElementById('addressField');
+  const addressInput = document.getElementById('address');
+
+  function toggleAddress(){
+    const isPaperback = document.querySelector('input[name="Format"]:checked').value === 'Paperback';
+    addressField.classList.toggle('hidden', !isPaperback);
+    addressInput.required = isPaperback;
+  }
+  formatRadios.forEach(r => r.addEventListener('change', toggleAddress));
+  toggleAddress();
+
+  const status = document.getElementById('formStatus');
+  if(new URLSearchParams(window.location.search).get('ordered') === '1'){
+    status.className = 'form-status show ok';
+    status.textContent = 'Order received — thank you! I\'ll be in touch shortly to confirm.';
+  }
+</script>
+
+</body>
+</html>
